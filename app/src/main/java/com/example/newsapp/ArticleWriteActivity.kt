@@ -109,7 +109,7 @@ class ArticleWriteActivity : AppCompatActivity() {
                 val afd = contentResolver.openAssetFileDescriptor(uri, "r")
                 val fileSize = afd?.length ?: -1L
                 afd?.close()
-                if (fileSize > 50 * 1024) {
+                if (fileSize > 100 * 1024) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@ArticleWriteActivity,
@@ -132,7 +132,7 @@ class ArticleWriteActivity : AppCompatActivity() {
                 val byteArray = outputStream.toByteArray()
 
                 // Double-check the compressed image size.
-                if (byteArray.size > 50 * 1024) {
+                if (byteArray.size > 100 * 1024) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@ArticleWriteActivity,

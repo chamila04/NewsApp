@@ -56,14 +56,14 @@
                 android:background="@color/white"
                 android:contentDescription="Profile Picture" />
 
-            <ImageButton
+            <!-- <ImageButton
                 android:id="@+id/editProfilePicButton"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="bottom|end"
                 android:background="@drawable/tag_background"
                 android:contentDescription="Edit profile picture"
-                android:src="@drawable/create_icon" />
+                android:src="@drawable/create_icon" /> -->
         </FrameLayout>
 
         <!-- Full Name -->
