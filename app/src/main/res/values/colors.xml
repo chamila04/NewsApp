@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#00b4d8</color>
+    <color name="red">#780000</color>
+    <color name="light_green">#affc41</color>
+    <color name="light_red">#ff686b</color>
+    <color name="light_yellow">#ffee32</color>
+    <color name="light_gray">#e5e5e5</color>
+
+    <!-- Colors for the API and other elements -->
+    <color name="activeColor">#000000</color>
+    <color name="inactiveColor">#FFFFFF</color>
+    <color name="activeTextColor">#FFFFFF</color>
+    <color name="inactiveTextColor">#000000</color>
+
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EditorHomeFragment">
+
+    <!-- Logo at the top -->
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_gravity="start"
+        android:src="@drawable/logo_line"
+        android:contentDescription="App Logo"
+        android:paddingStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="6dp"/>
+
+    <!-- Horizontal divider line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#E0E0E0"
+        android:layout_marginVertical="8dp"/>
+
+    <!-- RecyclerView below the divider -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvArticles"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="8dp"
+        android:paddingHorizontal="8dp"/>
+
+</LinearLayout>

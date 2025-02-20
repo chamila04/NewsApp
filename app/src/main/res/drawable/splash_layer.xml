@@ -1,0 +1,9 @@
+<!-- res/drawable/logo_full_layer.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/logo"
+            android:gravity="center"
+            android:tileMode="disabled" />
+    </item>
+</layer-list>
