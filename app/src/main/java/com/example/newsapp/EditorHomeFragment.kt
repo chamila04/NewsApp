@@ -55,36 +55,13 @@ class EditorHomeFragment : Fragment() {
                     }
                     binding.rvArticles.adapter = articlesAdapter
                 } else {
-                    Log.e("EditorHomeFragment", "Error: ${response.code()} ${response.message()}")
+                    Log.e("EditorHomeFragment", "Error: Response not successful ${response.code()} ${response.message()}")
                 }
             } catch (e: Exception) {
-                Log.e("EditorHomeFragment", "Exception: ${e.localizedMessage}")
+                Log.e("EditorHomeFragment", "Exception: Failed to fetch articles: ${e.localizedMessage}")
             }
         }
     }
-
-    private fun fetchArticles() {
-        lifecycleScope.launch {
-            try {
-                val response = ApiClient.apiService.getArticles()  // suspend call
-                if (response.isSuccessful && response.body() != null) {
-                    val articles = response.body()!!.articles
-                    // Update adapter with the fetched articles
-                    articlesAdapter = ArticlesAdapter(articles) { article ->
-                        val intent = Intent(requireContext(), EditorReviewActivity::class.java)
-                        intent.putExtra("article", article)
-                        startActivity(intent)
-                    }
-                    binding.rvArticles.adapter = articlesAdapter
-                } else {
-                    Log.e("EditorHomeFragment", "Response not successful: ${response.code()} ${response.message()}")
-                }
-            } catch (e: Exception) {
-                Log.e("EditorHomeFragment", "Failed to fetch articles: ${e.localizedMessage}")
-            }
-        }
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

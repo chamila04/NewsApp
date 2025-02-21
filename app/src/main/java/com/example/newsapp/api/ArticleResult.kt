@@ -1,6 +1,7 @@
 package com.example.newsapp.api
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 data class ArticleResult(
@@ -20,5 +21,6 @@ data class Article(
     val article: String,
     val status: String,
     val createdAt: String,
-    val updatedAt: String? = null  // Made nullable with a default value
+    val updatedAt: String? = null,  // Made nullable with a default value
+    val rating: Float = 0f
 ): Parcelable

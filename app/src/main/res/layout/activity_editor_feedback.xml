@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -43,6 +44,44 @@
         android:padding="12dp"
         android:textSize="16sp"
         android:inputType="textMultiLine" />
+
+    <!-- Rating Section (Read-Only) -->
+    <LinearLayout
+        android:id="@+id/ratingSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feedbackInput"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/ratingLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            android:rating="0.0"
+            android:progressTint="@android:color/holo_orange_light"
+            android:isIndicator="true" />
+
+        <TextView
+            android:id="@+id/ratingValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0/5.0"
+            android:textSize="16sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
     <!-- Button Container -->
     <LinearLayout

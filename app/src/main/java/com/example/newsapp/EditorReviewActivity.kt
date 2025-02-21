@@ -27,7 +27,7 @@ class EditorReviewActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Retrieve the article passed via intent.
-        val article: Article? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val article: Article? = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("article", Article::class.java)
         } else {
             @Suppress("DEPRECATION")
@@ -71,16 +71,26 @@ class EditorReviewActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.tagsRecyclerView.adapter = tagsAdapter
 
-        // Back button to close the activity.
-        binding.backButton.setOnClickListener {
-            finish()
+        // Initialize rating bar with article's rating and update the rating value text.
+        binding.ratingBar.rating = article.rating
+        binding.ratingValue.text = "${article.rating}/5.0"
+        binding.ratingBar.setOnRatingBarChangeListener { _, rating, _ ->
+            binding.ratingValue.text = "$rating/5.0"
         }
 
-        // Accept button: update article status to "accept"
+        // Back button to close the activity.
+        binding.backButton.setOnClickListener { finish() }
+
+        // Accept button: update article status to "accept" with rating.
         binding.acceptButton.setOnClickListener {
+            val selectedRating = binding.ratingBar.rating
             lifecycleScope.launch {
                 try {
-                    val request = UpdateStatusRequest(status = "accept", feedback = "")
+                    val request = UpdateStatusRequest(
+                        status = "accept",
+                        feedback = "",
+                        rating = selectedRating
+                    )
                     val response = ApiClient.apiService.updateArticleStatus(article._id, request)
                     if (response.isSuccessful) {
                         Toast.makeText(
@@ -89,7 +99,6 @@ class EditorReviewActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                         finish()
-                        // Optionally finish or refresh the UI here.
                     } else {
                         Toast.makeText(
                             this@EditorReviewActivity,
@@ -107,10 +116,11 @@ class EditorReviewActivity : AppCompatActivity() {
             }
         }
 
-        // Reject button: open EditorFeedbackActivity and pass the article ID.
+        // Reject button: open EditorFeedbackActivity and pass the article ID and current rating.
         binding.rejectButton.setOnClickListener {
             val intent = Intent(this, EditorFeedbackActivity::class.java)
             intent.putExtra("articleId", article._id)
+            intent.putExtra("currentRating", binding.ratingBar.rating)
             startActivity(intent)
         }
     }

@@ -5,5 +5,6 @@ data class ArticleRequest(
     val title: String,
     val tags: List<String>,
     val img: String,       // Base64 encoded image string
-    val article: String
+    val article: String,
+    val rating: Float? = null
 )

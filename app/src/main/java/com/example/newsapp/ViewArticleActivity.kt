@@ -70,12 +70,9 @@ class ViewArticleActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun populateArticle(article: Article) {
         binding.articleTopic.text = article.title
-
-        // Use username from the article endpoint to display in writer name.
         binding.writerName.text = article.username
 
         // Only show the date.
-        // Node.js sends the date as "2025-02-18T16:24:00.816Z", so we extract "2025-02-18"
         binding.updatedDate.text = if (article.updatedAt != null && article.updatedAt.length >= 10) {
             article.updatedAt.substring(0, 10)
         } else {
@@ -96,6 +93,10 @@ class ViewArticleActivity : AppCompatActivity() {
         binding.tagsRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.tagsRecyclerView.adapter = TagsAdapter(article.tags)
+
+        // Set the rating display.
+        binding.ratingDisplay.rating = article.rating
+        binding.ratingText.text = "${article.rating}/5.0"
     }
 
     private fun decodeBase64ToBitmap(base64String: String): Bitmap? {

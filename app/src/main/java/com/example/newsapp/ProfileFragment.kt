@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
 import com.example.newsapp.api.SessionManager
 import com.example.newsapp.api.UserSession
 import com.example.newsapp.databinding.FragmentProfileBinding

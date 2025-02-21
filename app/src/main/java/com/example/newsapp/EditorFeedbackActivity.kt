@@ -21,15 +21,22 @@ class EditorFeedbackActivity : AppCompatActivity() {
         binding = ActivityEditorFeedbackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Retrieve the article ID passed from EditorReviewActivity.
+        // Retrieve the article ID and rating passed from EditorReviewActivity.
         val articleId = intent.getStringExtra("articleId")
+        val passedRating = intent.getFloatExtra("currentRating", 0f)
+
         if (articleId == null) {
             Toast.makeText(this, "Article ID not found", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
-        // Send button: update article status to "reject" with feedback.
+        // Set the rating bar with the passed rating and make it non-interactive.
+        binding.ratingBar.rating = passedRating
+        binding.ratingValue.text = "$passedRating/5.0"
+        binding.ratingBar.setIsIndicator(true)
+
+        // Send button: update article status to "reject" with feedback and the passed rating.
         binding.sendButton.setOnClickListener {
             val feedbackText = binding.feedbackInput.text.toString().trim()
             if (feedbackText.isEmpty()) {
@@ -38,7 +45,11 @@ class EditorFeedbackActivity : AppCompatActivity() {
             }
             lifecycleScope.launch {
                 try {
-                    val request = UpdateStatusRequest(status = "reject", feedback = feedbackText)
+                    val request = UpdateStatusRequest(
+                        status = "reject",
+                        feedback = feedbackText,
+                        rating = passedRating
+                    )
                     val response = ApiClient.apiService.updateArticleStatus(articleId, request)
                     if (response.isSuccessful) {
                         Toast.makeText(

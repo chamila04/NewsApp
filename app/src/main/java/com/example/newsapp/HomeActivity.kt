@@ -6,11 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.newsapp.api.SessionManager
 import com.example.newsapp.api.UserSession
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.newsapp.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 

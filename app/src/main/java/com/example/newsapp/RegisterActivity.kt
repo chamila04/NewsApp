@@ -7,14 +7,10 @@ import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.newsapp.api.ApiClient
 import com.example.newsapp.api.RegisterRequest
 import com.example.newsapp.api.RegisterResult
-import com.example.newsapp.databinding.ActivityRegisterBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
