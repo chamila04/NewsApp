@@ -88,15 +88,6 @@ class ViewArticleActivity : AppCompatActivity() {
         } else {
             binding.articleImage.setImageResource(R.drawable.error_img)
         }
-
-        // Setup tags RecyclerView.
-        binding.tagsRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.tagsRecyclerView.adapter = TagsAdapter(article.tags)
-
-        // Set the rating display.
-        binding.ratingDisplay.rating = article.rating
-        binding.ratingText.text = "${article.rating}/5.0"
     }
 
     private fun decodeBase64ToBitmap(base64String: String): Bitmap? {
